@@ -1,4 +1,4 @@
-# Project:
+# Project :
 This repository contains the Java application codebase that is built and tested automatically using Jenkins and Docker, following the Git Flow branching model.
 # Tools Needed:
 1- GitHub account. <br>
@@ -53,5 +53,12 @@ WORKDIR /app
 RUN javac MyApp.java
 CMD ["java", "MyApp"]
 ```
+- docker buildx build --build-arg SKIP_TEST=-DskipTests=true -t java-app:latest .
+ ![Screenshot 2024-05-01 215317](https://github.com/KhaledGhazy3/jenkins/assets/161209615/ecf12e98-88da-4c75-9bf8-2fd454e8afda)
+ ![Screenshot 2024-05-01 215340](https://github.com/KhaledGhazy3/jenkins/assets/161209615/fec6edc4-7035-4461-9464-531e2b215407)
+ ![Screenshot 2024-05-01 215401](https://github.com/KhaledGhazy3/jenkins/assets/161209615/15259c71-2d8e-453a-bbbe-21b4c6620275)
+
+ 
 # Conclusion
 This setup allows for continuous integration and delivery of the Java application, ensuring that all changes are automatically built, tested, and ready for deployment.
+
