@@ -32,7 +32,19 @@ pipeline {
     }
 }
  ```
-3. Set up a webhook in GitHub to trigger Jenkins builds on code changes.
+3. Configure Jenkins:  <br>
+ - connect Jenkins to GitHub.
+   - Go to "Manage Jenkins" > "Manage Plugins" > "Available" and install "GitHub Integration Plugin".
+   - Set up credentials in Jenkins for GitHub (username and token).  <br> 
+ - Create a new pipeline job. 
+   - Select "New Item", name your pipeline (e.g., "GitHub Pipeline"), and choose "Pipeline" as the type.
+   - In the pipeline configuration, select "Pipeline script from SCM" and choose "Git" as the SCM.
+   - Enter the repository URL and credentials.
+   - Specify the branch to build (e.g., */develop).
+   - In Build Triggers, Check "GitHub hook trigger for GITScm polling".
+   - Save
+
+4. Set up a webhook in GitHub to trigger Jenkins builds on code changes.
 # Docker Integration
 Docker is used to containerize the Java application. The Dockerfile should be placed in the root directory of the repository. Here’s an example Dockerfile:
 ```
