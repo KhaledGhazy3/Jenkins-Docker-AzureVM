@@ -12,20 +12,21 @@ This repository contains the Java application codebase that is built and tested 
   ```groovy
 pipeline {
     agent any
+
     stages {
         stage('Build') {
             steps {
-                // Commands to build your Java application
+                echo 'Building..'
             }
         }
         stage('Test') {
             steps {
-                // Commands to test your Java application
+                echo 'Testing..'
             }
         }
-        stage('Dockerize') {
+        stage('Deploy') {
             steps {
-                // Commands to build and push Docker image
+                echo 'Deploying....'
             }
         }
     }
