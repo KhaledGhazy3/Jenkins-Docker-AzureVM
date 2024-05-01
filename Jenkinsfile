@@ -1,14 +1,10 @@
 pipeline{
-    agent{
-        label 'agent-01-maven'
-    }
+    agent any
     tools{
-        maven 'mvn3.9.0'
+        maven 'v3.8.1'
     }
     environment{
         SKIP_TEST='-DskipTests=true'
-        NEXUS_PASS=credentials('nexus-password')
-        NEXUS_USER=credentials('nexus-username')
     }
     stages{
         stage('Clean'){
@@ -26,12 +22,13 @@ pipeline{
                  archiveArtifacts artifacts: 'target/*.jar'
             }
         }
-        // stage('Upload JAR to Nexus') {
-        //     steps {
-        //         sh """
-        //         curl -v -u ${NEXUS_USER}:${NEXUS_PASS} --upload-file ${WORKSPACE}/target/*.jar http://192.168.205.141:8081/repository/demo-test/test/demo1-0.0.1-SNAPSHOT.jar
-        //         """
-        //     }
-        // }
+        stage('Upload JAR to Nexus') {
+            steps {
+                sh """
+                docker build -t java-app:${BUILD_NUMBER}
+                docker images
+                """
+            }
+        }
     }
 }
