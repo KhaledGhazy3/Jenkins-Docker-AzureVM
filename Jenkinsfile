@@ -25,7 +25,7 @@ pipeline{
         stage('Upload JAR to Nexus') {
             steps {
                 sh """
-                docker buildx build --build-arg SKIP_TEST='-DskipTests=true' -t java-app .
+                docker buildx build SKIP_TEST='-DskipTests=true' -t java-app .
                 docker images
                 """
             }
